@@ -43,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: Image.asset("assets/images/poster.png"),
               ),
-              ifTap
-                  ? TransparentWidget()
-                  : Container()
+              if (ifTap) ...[TransparentWidget()]
             ],
           )
         )
