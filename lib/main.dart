@@ -30,20 +30,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool ifTap = true;
 
+  void _ifTap(){
+      setState(() {ifTap = !ifTap;});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: GestureDetector(
           onTap: (){
-            setState(() {ifTap = false;});
+            setState(() {_ifTap();});
           },
           child: Stack(
             children: <Widget>[
-              Container(
-                child: Image.asset("assets/images/poster.png"),
-              ),
-              if (ifTap) ...[TransparentWidget()]
+                if (ifTap)
+                  TransparentWidget()
             ],
           )
         )
@@ -62,28 +64,21 @@ class TransparentWidget extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text(
+                'Вы увидите, когда ваш заказ будет выполнен',
                 style: TextStyle(
                     fontSize: 17,
                     color: Colors.white
-                ),
-                'Вы увидите, когда ваш заказ будет выполнен'
+                )
             ),
             SizedBox(height: 20,),
             Text(
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 14,
-                    color: Colors.white
-                ),
-                'мне всё понятно,'
-            ),
-            Text(
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 14,
-                    color: Colors.white
-                ),
-                'нажмите чтобы продолжить'
+              'мне всё понятно,\nнажмите чтобы продолжить',
+              style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontSize: 14,
+                  color: Colors.white
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -91,5 +86,4 @@ class TransparentWidget extends StatelessWidget{
     );
   }
 }
-
 
