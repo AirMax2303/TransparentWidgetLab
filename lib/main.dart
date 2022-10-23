@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool ifTap = true;
 
   void _ifTap(){
-      setState(() {ifTap = !ifTap;});
+      setState(() {ifTap = false;});
   }
 
   @override
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: GestureDetector(
           onTap: (){
-            setState(() {_ifTap();});
+            _ifTap();
           },
           child: Stack(
             children: <Widget>[
