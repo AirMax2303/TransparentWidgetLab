@@ -30,25 +30,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool ifTap = true;
 
-  void _ifTap(){
-      setState(() {ifTap = false;});
+  void _setVisibility(){
+    setState(() {ifTap = false;});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: GestureDetector(
-          onTap: (){
-            _ifTap();
-          },
-          child: Stack(
-            children: <Widget>[
-                if (ifTap)
-                  TransparentWidget()
-            ],
+          child: GestureDetector(
+              onTap: (){
+                _setVisibility();
+              },
+              child: Stack(
+                children: <Widget>[
+                  if (ifTap)
+                    TransparentWidget()
+                ],
+              )
           )
-        )
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -58,7 +58,7 @@ class TransparentWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black.withOpacity(0.5),
+      color: const Color.fromRGBO(0,0,0,0.5),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -86,4 +86,3 @@ class TransparentWidget extends StatelessWidget{
     );
   }
 }
-
